@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1658872409 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\alunos.c
+	"alunos.h"
+
+1658869200 c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\alunos.h
+	"cabecalho.h"
+
+1658870721 c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\cabecalho.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"alunos.h"
+	"livros.h"
+	"infraestrutura.h"
+	"arquivo.h"
+
+1658692086 c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\livros.h
+	"cabecalho.h"
+
+1658692086 c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\infraestrutura.h
+	"cabecalho.h"
+
+1658692086 c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\arquivo.h
+	"cabecalho.h"
+
+1658869279 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\main.c
+	"cabecalho.h"
+
+1658976647 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\livros.c
+	"livros.h"
+
+1658976844 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\infraestrutura.c
+	"infraestrutura.h"
+
+1658872225 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\arquivo.c
+	"arquivo.h"
+
