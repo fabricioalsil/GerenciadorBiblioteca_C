@@ -24,9 +24,9 @@ void imprimir_todos_alunos(struct alunos *cab_alunos) {
     while (p != NULL) {
         printf("Nome: %s; ID: %d.\n", p->nome, p->id);
         if(p->pendencia == 0)
-            puts("Nao possui pendencias");
+            puts("Nao possui pendencias\n");
         else
-            puts("Possui pendencias");
+            puts("Possui pendencias\n");
         p = p->prox;
     }
 }

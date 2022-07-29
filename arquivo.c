@@ -1,7 +1,6 @@
 #include "arquivo.h"
 
 void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
-
     char *copiar;
     size_t tam = 1;
     int posicao;
@@ -19,7 +18,7 @@ void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
     struct alunos* ant = cab_alunos;
     for(int i=0; i<(*qnt_alunos); i++){
         p = ant->prox;
-        p = (struct alunos *) malloc (sizeof(struct alunos));
+        p = (struct alunos*) malloc (sizeof(struct alunos));
         ant->prox = p;
         getline(&copiar, &tam, arquivo);
         p->id = atoi(copiar);
@@ -33,8 +32,10 @@ void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
         ant = p;
     }
 
+    free(copiar);
     fclose(arquivo);
     return;
+
 }
 
 void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros){
@@ -74,6 +75,7 @@ void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros){
         ant = p;
     }
 
+    free(copiar);
     fclose(arquivo);
     return;
 }
@@ -110,6 +112,7 @@ void iniciar_infraestrutura(struct infraestrutura *cab_infraestrutura, int *num_
         antr = r;
     }
 
+    free(copiar);
     fclose(arquivo);
     return;
 }
