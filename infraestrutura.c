@@ -4,7 +4,7 @@
 //__fpurge(stdin);
 //fflush(stdin);
 
-void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, struct alunos *cab_alunos) {
+void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, struct alunos *cab_alunos) { //percorre a lista printando todas as posições
     struct alunos *aluno;
 
     if (cab_infraestrutura->prox == NULL) {
@@ -32,14 +32,14 @@ void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, str
     }
 }
 
-struct infraestrutura *busca_infraestrutura(struct infraestrutura *cab, int id) {
+struct infraestrutura *busca_infraestrutura(struct infraestrutura *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posição atual
     struct infraestrutura *p = cab->prox;
     while (p != NULL && p->id != id)
         p = p->prox;
     return p;
 }
 
-struct infraestrutura *busca_infraestrutura_ant(struct infraestrutura *cab, int id, struct infraestrutura **ant) {
+struct infraestrutura *busca_infraestrutura_ant(struct infraestrutura *cab, int id, struct infraestrutura **ant) { //percorre a lista até achar um ID igual ou maior retornando a posição atual e anterior
     (*ant) = cab;
     struct infraestrutura *p = cab->prox;
     while (p != NULL && p->id != id) {
@@ -49,7 +49,7 @@ struct infraestrutura *busca_infraestrutura_ant(struct infraestrutura *cab, int 
     return p;
 }
 
-void imprimir_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){
+void imprimir_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){ //imprime o aluno correspondente ao ID inserido
     struct alunos *aluno;
 
     int id;
@@ -78,7 +78,7 @@ void imprimir_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alun
     }
 }
 
-void inserir_infraestrutura(struct infraestrutura *cab, int *num_infraestrutura, int *qnt_infraestrutura) {
+void inserir_infraestrutura(struct infraestrutura *cab, int *num_infraestrutura, int *qnt_infraestrutura) { //adiciona nova infraestrutura
     struct infraestrutura *ant = NULL;
     int id;
 
@@ -119,7 +119,7 @@ void inserir_infraestrutura(struct infraestrutura *cab, int *num_infraestrutura,
     (*qnt_infraestrutura)++;
 }
 
-void remover_infraestrutura(struct infraestrutura *cab, int *qnt_infraestrutura) {
+void remover_infraestrutura(struct infraestrutura *cab, int *qnt_infraestrutura) { //remove uma infraestrutura
     struct infraestrutura *ant = NULL;
     struct infraestrutura *p;
     int id;
@@ -154,7 +154,7 @@ void remover_infraestrutura(struct infraestrutura *cab, int *qnt_infraestrutura)
     }
 }
 
-void emprestar_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){
+void emprestar_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){ //ocupa uma infraestrutura
     int id_infraestrutura;
     int id_aluno;
     struct infraestrutura *infraestrutura;
@@ -189,7 +189,7 @@ void emprestar_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alu
     infraestrutura->estado = 1;
 }
 
-void devolver_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){
+void devolver_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alunos){ //desocupa uma infraestrutura
     int id_infraestrutura;
     int id_aluno;
     struct infraestrutura *infraestrutura;

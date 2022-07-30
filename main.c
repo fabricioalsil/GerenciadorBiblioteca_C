@@ -13,13 +13,14 @@ int main()
 
     int id_aluno = 0; //IDs gerados automaticamente pela bilioteca
     int id_livro = 0;
-    int num_infraestrutura = 0;
 
-    int qnt_aluno = 0;
+    int num_infraestrutura = 0; //ID que será inserida pelo usuário
+
+    int qnt_aluno = 0; //Quantidade real de cada lista, retirando os removidos
     int qnt_livro = 0;
     int qnt_infraestrutura = 0;
 
-    int opcao;
+    int opcao; //opção para os próximos menus
 
     system(CLEAR);
     puts("Escolha uma das opcoes abaixo: ");
@@ -27,7 +28,13 @@ int main()
     puts("2 - Comecar da ultima sessao salva");
     puts("Digite a opcao: ");
     scanf("%d", &opcao);
-    flush_in();
+    flush_in(); //limpa buffer de entrada 'n'
+    while(opcao != 1 && opcao != 2){
+        printf("Opcao invalida, tente novamente: ");
+        scanf("%d", &opcao);
+        flush_in();
+    }
+
     system(CLEAR);
 
     if(opcao == 2){
@@ -35,7 +42,7 @@ int main()
         iniciar_livro(cab_livros, &id_livro, &qnt_livro);
         iniciar_infraestrutura(cab_infraestrutura, &num_infraestrutura, &qnt_infraestrutura);
     }
-
+    opcao = 0;
     int enq = 1;
     while(enq){
         //Abre o menu até que a opção de encerrar o programa seja escolhida
@@ -65,6 +72,12 @@ int main()
         puts("Digite: ");
         scanf("%d", &opcao);
         flush_in();
+
+        while(opcao < 1 || opcao > 17){//garante o range de opcoes
+            printf("Opcao invalida, tente novamente: ");
+            scanf("%d", &opcao);
+            flush_in();
+        }
         system(CLEAR);
 
         switch (opcao){
@@ -140,16 +153,57 @@ int main()
                 scanf("%d", &opcao);
                 flush_in();
 
-                if(opcao == 2){
-                    encerrar_aluno(cab_alunos, id_aluno, qnt_aluno);
-                    encerrar_livro(cab_livros, id_livro, qnt_livro);
-                    encerrar_infraestrutura(cab_infraestrutura, num_infraestrutura, qnt_infraestrutura);
+                if(opcao == 2){ //usado para salvar e criptografar os arquivos
+                    int senha;
+                    printf("Digite uma senha numerica entre 1 e 74: ");//quantida de caracteres da tabela ASCII entre 'A' e 'z'
+                    scanf("%d", &senha);
+                    flush_in();
+                    while(senha < 1 || senha > 74){
+                        printf("Senha invalida, tente novamente: ");
+                        scanf("%d", &senha);
+                        flush_in();
+                    }
+                    encerrar_aluno(cab_alunos, id_aluno, qnt_aluno, senha);
+                    encerrar_livro(cab_livros, id_livro, qnt_livro, senha);
+                    encerrar_infraestrutura(cab_infraestrutura, num_infraestrutura, qnt_infraestrutura, senha);
+                }else if(opcao == 1){//limpa todas as listas
+                    struct alunos *p = cab_alunos->prox;
+                    struct alunos *antp;
+                    while(p != NULL){
+                        antp = p;
+                        p = p->prox;
+                        free(antp->nome);
+                        free(antp->matricula);
+                        free(antp);
+                    }
+                    free(cab_alunos);
+
+                    struct livros *r = cab_livros->prox;
+                    struct livros *antr;
+                    while(r != NULL){
+                        antr = r;
+                        r = r->prox;
+                        free(antr->nome);
+                        free(antr->categoria);
+                        free(antr);
+                    }
+                    free(cab_livros);
+
+                    struct infraestrutura *s = cab_infraestrutura->prox;
+                    struct infraestrutura *ants;
+                    while(s != NULL){
+                        ants = s;
+                        s = s->prox;
+                        free(ants);
+                    }
+                    free(cab_infraestrutura);
+                }else{
+                    puts("Opcao invalida.");
+                    continuar();
+                    continue;
                 }
 
                 enq = 0;
-                break;
-            default:
-                puts("Opcao invalida, tente novamente.");
                 break;
         }
     }

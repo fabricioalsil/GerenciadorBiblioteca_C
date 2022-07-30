@@ -35,39 +35,40 @@
 1658872225 source:c:\users\fabri\onedrive\documentos\fabrício\aeds1\trabalho em c\aeds\arquivo.c
 	"arquivo.h"
 
-1659047646 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\alunos.c
+1659189641 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\alunos.c
 	"alunos.h"
 
-1659041257 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\alunos.h
+1659123125 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\alunos.h
 	"cabecalho.h"
 
-1659041257 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\cabecalho.h
+1659200888 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\cabecalho.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<time.h>
 	"alunos.h"
 	"livros.h"
 	"infraestrutura.h"
 	"arquivo.h"
 
-1659041257 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\livros.h
+1659125036 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\livros.h
 	"cabecalho.h"
 
-1659041257 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\infraestrutura.h
+1659125381 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\infraestrutura.h
 	"cabecalho.h"
 
-1659041257 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\arquivo.h
+1659197283 c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\arquivo.h
 	"cabecalho.h"
 
-1659047225 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\arquivo.c
+1659198194 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\arquivo.c
 	"arquivo.h"
 
-1659041257 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\infraestrutura.c
+1659122315 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\infraestrutura.c
 	"infraestrutura.h"
 
-1659041257 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\livros.c
+1659201110 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\livros.c
 	"livros.h"
 
-1659041257 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\main.c
+1659201582 source:c:\users\pichau\documents\fabrício\gerenciadorbiblioteca_c\main.c
 	"cabecalho.h"
 

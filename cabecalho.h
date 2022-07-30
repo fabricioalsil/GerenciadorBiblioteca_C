@@ -4,15 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-#ifdef __linux__
+#ifdef __linux__ //define o necessario para que possa ser possivel apagar o terminal tanto em linux quanto em windows
 	#define CLEAR "clear"
 #elif _WIN32
 	#define CLEAR "cls"
 #endif
 
 struct alunos{  //definição dos structs necessários
-    char *nome;
+    char *nome; //todas as strings foram declaradas como ponteiro para que seja possivel usar o getline e economizar memoria RAM
     char *matricula;
     int id;
     int pendencia;

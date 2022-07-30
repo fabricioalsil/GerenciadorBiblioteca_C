@@ -1,8 +1,24 @@
 #include "arquivo.h"
 
+void criptografar(char *palavra, int senha){ //função para criptografar as palavras somando a senha em cada um dos caracteres
+    int aux;
+    for(int i=0; palavra[i] != '\0'; i++){
+        aux = palavra[i];
+        if(aux>= '0' && aux<= 'z'){
+            aux = aux + senha;
+            if(aux > 'z') //caso ultrapasse o 'z' retorna para a primeira posição
+                aux = aux - 'z' + '0' - 1;
+            palavra[i] = aux;
+        }
+    }
+
+}
+
+//le os dados inseridos nos arquivos:
+
 void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
     char *copiar;
-    size_t tam = 1;
+    size_t tam = 1; //necessario para o getline
     int posicao;
 
     copiar = (char *) malloc (sizeof(char));
@@ -117,7 +133,10 @@ void iniciar_infraestrutura(struct infraestrutura *cab_infraestrutura, int *num_
     return;
 }
 
-void encerrar_aluno(struct alunos *cab_alunos, int id_alunos, int qnt_alunos){
+
+//grava os dados nos arquivos:
+
+void encerrar_aluno(struct alunos *cab_alunos, int id_alunos, int qnt_alunos, int senha){
 
     FILE *arquivo;
     arquivo = fopen("aluno.txt", "w");
@@ -128,7 +147,9 @@ void encerrar_aluno(struct alunos *cab_alunos, int id_alunos, int qnt_alunos){
     struct alunos *ant = cab_alunos->prox;
     while(p != NULL){
     	fprintf(arquivo, "%d\n", p->id);
+    	criptografar(p->nome, senha);
         fprintf(arquivo, "%s\n", p->nome);
+        criptografar(p->matricula, senha);
         fprintf(arquivo, "%s\n", p->matricula);
         fprintf(arquivo, "%d\n", p->pendencia);
         p = p->prox;
@@ -143,7 +164,7 @@ void encerrar_aluno(struct alunos *cab_alunos, int id_alunos, int qnt_alunos){
     return;
 }
 
-void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros){
+void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros, int senha){
 
     FILE *arquivo;
     arquivo = fopen("livro.txt", "w");
@@ -154,8 +175,10 @@ void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros){
     struct livros *ant = cab_livros->prox;
     while(p != NULL){
     	fprintf(arquivo, "%d\n", p->id);
+    	criptografar(p->nome, senha);
     	fprintf(arquivo, "%s\n", p->nome);
     	fprintf(arquivo, "%d\n", p->ano);
+    	criptografar(p->nome, senha);
     	fprintf(arquivo, "%s\n", p->categoria);
     	fprintf(arquivo, "%d\n", p->estado);
     	fprintf(arquivo, "%d\n", p->id_aluno);
@@ -171,7 +194,7 @@ void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros){
     return;
 }
 
-void encerrar_infraestrutura(struct infraestrutura *cab_infraestrutura, int num_infraestrutura, int qnt_infraestrutura){
+void encerrar_infraestrutura(struct infraestrutura *cab_infraestrutura, int num_infraestrutura, int qnt_infraestrutura, int senha){
 
     FILE *arquivo;
     arquivo = fopen("infraestrutura.txt", "w");
