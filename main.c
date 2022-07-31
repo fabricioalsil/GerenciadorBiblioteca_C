@@ -2,7 +2,7 @@
 
 int main()
 {
-    struct alunos* cab_alunos = (struct alunos*) malloc (sizeof(struct alunos)); //criação do cabeça de cada uma das listas encadeadas
+    struct alunos* cab_alunos = (struct alunos*) malloc (sizeof(struct alunos)); //criacao do cabeca de cada uma das listas encadeadas
     cab_alunos->prox = NULL;
 
     struct livros* cab_livros = (struct livros*) malloc (sizeof(struct livros));
@@ -14,13 +14,13 @@ int main()
     int id_aluno = 0; //IDs gerados automaticamente pela bilioteca
     int id_livro = 0;
 
-    int num_infraestrutura = 0; //ID que será inserida pelo usuário
-
     int qnt_aluno = 0; //Quantidade real de cada lista, retirando os removidos
     int qnt_livro = 0;
     int qnt_infraestrutura = 0;
 
-    int opcao; //opção para os próximos menus
+    int opcao; //opcao para os proximos menus
+
+    int senha;
 
     system(CLEAR);
     puts("Escolha uma das opcoes abaixo: ");
@@ -38,14 +38,22 @@ int main()
     system(CLEAR);
 
     if(opcao == 2){
-        iniciar_aluno(cab_alunos, &id_aluno, &qnt_aluno);
-        iniciar_livro(cab_livros, &id_livro, &qnt_livro);
-        iniciar_infraestrutura(cab_infraestrutura, &num_infraestrutura, &qnt_infraestrutura);
+        printf("Digite a senha do arquivo criptografado (entre 1 e 74): ");//quantida de caracteres da tabela ASCII entre 'A' e 'z'
+            scanf("%d", &senha);
+            flush_in();
+            while(senha < 1 || senha > 74){
+                printf("Senha invalida, tente novamente: ");
+                scanf("%d", &senha);
+                flush_in();
+            }
+        iniciar_aluno(cab_alunos, &id_aluno, &qnt_aluno, senha);
+        iniciar_livro(cab_livros, &id_livro, &qnt_livro, senha);
+        iniciar_infraestrutura(cab_infraestrutura, &qnt_infraestrutura, senha);
     }
     opcao = 0;
     int enq = 1;
     while(enq){
-        //Abre o menu até que a opção de encerrar o programa seja escolhida
+        //Abre o menu ate que a opcao de encerrar o programa seja escolhida
         puts("Bem vindo ao menu inicial!");
         puts("Digite sua opcao abaixo para prosseguir:\n");
 
@@ -122,7 +130,7 @@ int main()
                 continuar();
                 break;
             case 11:
-                inserir_infraestrutura(cab_infraestrutura, &num_infraestrutura, &qnt_infraestrutura);
+                inserir_infraestrutura(cab_infraestrutura, &qnt_infraestrutura);
                 continuar();
                 break;
             case 12:
@@ -154,8 +162,7 @@ int main()
                 flush_in();
 
                 if(opcao == 2){ //usado para salvar e criptografar os arquivos
-                    int senha;
-                    printf("Digite uma senha numerica entre 1 e 74: ");//quantida de caracteres da tabela ASCII entre 'A' e 'z'
+                    printf("Digite uma senha numerica entre 1 e 74: ");//quantida de caracteres da tabela ASCII entre '0' e 'z'
                     scanf("%d", &senha);
                     flush_in();
                     while(senha < 1 || senha > 74){
@@ -165,7 +172,7 @@ int main()
                     }
                     encerrar_aluno(cab_alunos, id_aluno, qnt_aluno, senha);
                     encerrar_livro(cab_livros, id_livro, qnt_livro, senha);
-                    encerrar_infraestrutura(cab_infraestrutura, num_infraestrutura, qnt_infraestrutura, senha);
+                    encerrar_infraestrutura(cab_infraestrutura, qnt_infraestrutura, senha);
                 }else if(opcao == 1){//limpa todas as listas
                     struct alunos *p = cab_alunos->prox;
                     struct alunos *antp;

@@ -1,19 +1,19 @@
 #include "alunos.h"
 
-void flush_in() { //função criada para limpar o buffer de entrada
+void flush_in() { //funcao criada para limpar o buffer de entrada
     int ch;
     do {
         ch = fgetc(stdin);
     } while (ch != EOF && ch != '\n');
 }
 
-void continuar(){ //função criada para facilitar a visualização das respostas
+void continuar(){ //funcao criada para facilitar a visualizacao das respostas
     printf("\nPressione Enter para continuar...");
     while( getchar() != '\n' );
     system(CLEAR);
 }
 
-void imprimir_todos_alunos(struct alunos *cab_alunos) { //percorre a lista printando todas as posições
+void imprimir_todos_alunos(struct alunos *cab_alunos) { //percorre a lista printando todas as posicoes
     if (cab_alunos->prox == NULL) { //se o cab aponta pra null a lista esta vazia e nao tem cadastro de alunos
         puts("Nenhum aluno foi matriculado!");
         return;
@@ -31,14 +31,14 @@ void imprimir_todos_alunos(struct alunos *cab_alunos) { //percorre a lista print
     }
 }
 
-struct alunos *busca_aluno(struct alunos *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posição atual
+struct alunos *busca_aluno(struct alunos *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posicao atual
     struct alunos *p = cab->prox;
     while (p != NULL && p->id < id)
         p = p->prox;
     return p;
 }
 
-struct alunos *busca_aluno_ant(struct alunos *cab, int id, struct alunos **ant) { //percorre a lista até achar um ID igual ou maior retornando a posição atual e anterior
+struct alunos *busca_aluno_ant(struct alunos *cab, int id, struct alunos **ant) { //percorre a lista até achar um ID igual ou maior retornando a posicao atual e anterior
     (*ant) = cab;
     struct alunos *p = cab->prox;
     while (p != NULL && p->id < id) {
@@ -57,7 +57,7 @@ void imprimir_aluno(struct alunos *cab){ //imprime o aluno correspondente ao ID 
 
     struct alunos *p = busca_aluno(cab, id);
 
-    if(p != NULL && p->id == id){ //como a busca devolve maior ou igual temos que testar se é igual
+    if(p != NULL && p->id == id){ //como a busca devolve maior ou igual temos que testar se e igual
         printf("Nome: %s; ID: %d.\n", p->nome, p->id);
         if(p->pendencia == 0)
             puts("Nao possui pendencias.");
@@ -83,7 +83,7 @@ void inserir_aluno(struct alunos *cab, int *id_aluno, int *qnt_aluno) { //adicio
 
     puts("Digite o nome do aluno: ");
     posicao = getline(&p->nome, &tam , stdin); //recebe a quantidade de caracteres lidos
-    p->nome[posicao - 1] = '\0'; //troca a ultima posição (\n) por \0.
+    p->nome[posicao - 1] = '\0'; //troca a ultima posicao (\n) por \0.
     puts("Digite a matricula: ");
     posicao = getline(&p->matricula, &tam2, stdin);
     p->matricula[posicao - 1] = '\0';

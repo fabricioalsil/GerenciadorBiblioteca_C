@@ -12,7 +12,7 @@
 	#define CLEAR "cls"
 #endif
 
-struct alunos{  //definição dos structs necessários
+struct alunos{  //definicao dos structs necessarios
     char *nome; //todas as strings foram declaradas como ponteiro para que seja possivel usar o getline e economizar memoria RAM
     char *matricula;
     int id;
@@ -38,6 +38,7 @@ struct infraestrutura{
     struct infraestrutura* prox;
 };
 
+//include das bibliotecas criadas:
 #include "alunos.h"
 #include "livros.h"
 #include "infraestrutura.h"

@@ -2,89 +2,54 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="livros.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="alunos.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4735" topLine="1" />
-		</Cursor>
-		<Folding>
-			<Collapse line="3" />
-			<Collapse line="26" />
-			<Collapse line="33" />
-			<Collapse line="43" />
-			<Collapse line="104" />
-			<Collapse line="149" />
-			<Collapse line="174" />
-			<Collapse line="211" />
-		</Folding>
-	</File>
-	<File name="infraestrutura.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1232" topLine="6" />
+			<Cursor1 position="2858" topLine="72" />
 		</Cursor>
 	</File>
-	<File name="cabecalho.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="livros.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="141" topLine="1" />
+			<Cursor1 position="1214" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="alunos.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="arquivo.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="689" topLine="0" />
+			<Cursor1 position="1834" topLine="43" />
 		</Cursor>
 	</File>
-	<File name="livros.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="infraestrutura.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="337" topLine="8" />
+			<Cursor1 position="5639" topLine="164" />
 		</Cursor>
 	</File>
-	<File name="arquivo.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="cabecalho.h" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="903" topLine="7" />
+			<Cursor1 position="916" topLine="28" />
 		</Cursor>
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5468" topLine="153" />
+			<Cursor1 position="140" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="arquivo.c" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="arquivo.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="390" topLine="0" />
+			<Cursor1 position="829" topLine="0" />
 		</Cursor>
-		<Folding>
-			<Collapse line="18" />
-			<Collapse line="56" />
-			<Collapse line="138" />
-			<Collapse line="196" />
-		</Folding>
 	</File>
-	<File name="alunos.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="livros.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1884" topLine="0" />
+			<Cursor1 position="1270" topLine="4" />
 		</Cursor>
-		<Folding>
-			<Collapse line="2" />
-			<Collapse line="9" />
-			<Collapse line="15" />
-			<Collapse line="33" />
-			<Collapse line="40" />
-			<Collapse line="50" />
-			<Collapse line="70" />
-			<Collapse line="97" />
-		</Folding>
 	</File>
-	<File name="infraestrutura.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="alunos.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5993" topLine="18" />
+			<Cursor1 position="948" topLine="4" />
 		</Cursor>
-		<Folding>
-			<Collapse line="6" />
-			<Collapse line="34" />
-			<Collapse line="41" />
-			<Collapse line="51" />
-			<Collapse line="121" />
-			<Collapse line="156" />
-			<Collapse line="191" />
-		</Folding>
+	</File>
+	<File name="infraestrutura.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1395" topLine="4" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

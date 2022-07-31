@@ -1,7 +1,7 @@
 #include "livros.h"
 
 
-void imprimir_todos_livros(struct livros *cab_livros, struct alunos *cab_alunos) { //percorre a lista printando todas as posições
+void imprimir_todos_livros(struct livros *cab_livros, struct alunos *cab_alunos) { //percorre a lista printando todas as posicoes
     //passamos o cab_alunos para que seja possivel encontrar a matricula do aluno que esta com o livro no momento
     struct alunos *aluno;
 
@@ -24,14 +24,14 @@ void imprimir_todos_livros(struct livros *cab_livros, struct alunos *cab_alunos)
     }
 }
 
-struct livros *busca_livro(struct livros *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posição atual
+struct livros *busca_livro(struct livros *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posicao atual
     struct livros *p = cab->prox;
     while (p != NULL && p->id < id)
         p = p->prox;
     return p;
 }
 
-struct livros *busca_livro_ant(struct livros *cab, int id, struct livros **ant) { //percorre a lista até achar um ID igual ou maior retornando a posição atual e anterior
+struct livros *busca_livro_ant(struct livros *cab, int id, struct livros **ant) { //percorre a lista ate achar um ID igual ou maior retornando a posicao atual e anterior
     (*ant) = cab;
     struct livros *p = cab->prox;
     while (p != NULL && p->id < id) {
@@ -122,7 +122,7 @@ void inserir_livro(struct livros *cab, int *id_livro, int *qnt_livro) { //adicio
     posicao = getline(&p->categoria, &tam2, stdin);
     p->categoria[posicao - 1] = '\0';
 
-    //a partir do relogio do computador verificamos o ano atual como limite de inserção:
+    //a partir do relogio do computador verificamos o ano atual como limite de insercao:
     time_t ano;
     struct tm * info;
     time (&ano);
@@ -233,7 +233,7 @@ void devolver_livro(struct alunos *cab_alunos, struct livros *cab_livros){ //dev
     flush_in();
 
     livro = busca_livro(cab_livros, id_livro);
-    if(livro==NULL || livro->id!=id_livro){ //como a busca devolve maior ou igual temos que testar se é igual
+    if(livro==NULL || livro->id!=id_livro){ //como a busca devolve maior ou igual temos que testar se e igual
         puts("Livro nao encontrado");
         return;
     }if(livro->estado == 0){

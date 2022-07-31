@@ -4,7 +4,7 @@
 //__fpurge(stdin);
 //fflush(stdin);
 
-void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, struct alunos *cab_alunos) { //percorre a lista printando todas as posições
+void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, struct alunos *cab_alunos) { //percorre a lista printando todas as posicoes
     struct alunos *aluno;
 
     if (cab_infraestrutura->prox == NULL) {
@@ -32,14 +32,14 @@ void imprimir_toda_infraestrutura(struct infraestrutura *cab_infraestrutura, str
     }
 }
 
-struct infraestrutura *busca_infraestrutura(struct infraestrutura *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posição atual
+struct infraestrutura *busca_infraestrutura(struct infraestrutura *cab, int id) { //percorre a lista procurando algum ID maior ou igual ao buscado retornando a posicao atual
     struct infraestrutura *p = cab->prox;
     while (p != NULL && p->id != id)
         p = p->prox;
     return p;
 }
 
-struct infraestrutura *busca_infraestrutura_ant(struct infraestrutura *cab, int id, struct infraestrutura **ant) { //percorre a lista até achar um ID igual ou maior retornando a posição atual e anterior
+struct infraestrutura *busca_infraestrutura_ant(struct infraestrutura *cab, int id, struct infraestrutura **ant) { //percorre a lista ate achar um ID igual ou maior retornando a posicao atual e anterior
     (*ant) = cab;
     struct infraestrutura *p = cab->prox;
     while (p != NULL && p->id != id) {
@@ -78,7 +78,7 @@ void imprimir_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alun
     }
 }
 
-void inserir_infraestrutura(struct infraestrutura *cab, int *num_infraestrutura, int *qnt_infraestrutura) { //adiciona nova infraestrutura
+void inserir_infraestrutura(struct infraestrutura *cab, int *qnt_infraestrutura) { //adiciona nova infraestrutura
     struct infraestrutura *ant = NULL;
     int id;
 
@@ -115,7 +115,6 @@ void inserir_infraestrutura(struct infraestrutura *cab, int *num_infraestrutura,
     else if(p->tipo == 3)
         printf("Armario");
     puts(" cadastrado com sucesso!");
-    (*num_infraestrutura)++;
     (*qnt_infraestrutura)++;
 }
 
@@ -168,7 +167,7 @@ void emprestar_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alu
     if(infraestrutura==NULL){
         puts("Nao encontrado");
         return;
-    }if(infraestrutura->estado!=0){
+    }if(infraestrutura->estado!=0){ //verifica a ocupacao
         puts("A infraestrutura ja esta ocupada");
         return;
     }
@@ -179,7 +178,7 @@ void emprestar_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alu
 
     aluno = busca_aluno(cab_alunos, id_aluno);
     if(aluno==NULL || aluno->id!=id_aluno){
-        puts("Aluno não encontrado");
+        puts("Aluno nao encontrado");
         return;
     }
 
@@ -217,10 +216,10 @@ void devolver_infraestrutura(struct infraestrutura *cab, struct alunos *cab_alun
         puts("Infraestrutura nao encontrada");
         return;
     }if(infraestrutura->estado == 0){
-        puts("A infraestrutura ja se encontra disponivel");
+        puts("A infraestrutura ja se encontra disponivel"); //verifica a ocupacao
         return;
     }if(infraestrutura->id_aluno != aluno->id){
-        puts("A infraestrutura se encontra ocupada com outro aluno");
+        puts("A infraestrutura se encontra ocupada com outro aluno"); //verifica se o aluno correto quer desocupar
         return;
     }
 

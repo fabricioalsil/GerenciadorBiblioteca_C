@@ -1,13 +1,27 @@
 #include "arquivo.h"
 
-void criptografar(char *palavra, int senha){ //função para criptografar as palavras somando a senha em cada um dos caracteres
+void criptografar(char *palavra, int senha){ //funcao para criptografar as palavras somando a senha em cada um dos caracteres
     int aux;
     for(int i=0; palavra[i] != '\0'; i++){
         aux = palavra[i];
         if(aux>= '0' && aux<= 'z'){
             aux = aux + senha;
-            if(aux > 'z') //caso ultrapasse o 'z' retorna para a primeira posição
+            if(aux > 'z') //caso ultrapasse o 'z' retorna para a primeira posicao
                 aux = aux - 'z' + '0' - 1;
+            palavra[i] = aux;
+        }
+    }
+
+}
+
+void descriptografar(char *palavra, int senha){ //funcao para descriptografar as palavras subtraindo a senha em cada um dos caracteres
+    int aux;
+    for(int i=0; palavra[i] != '\0'; i++){
+        aux = palavra[i];
+        if(aux>= '0' && aux<= 'z'){
+            aux = aux - senha;
+            if(aux < '0') //caso ultrapasse o '0' retorna para a ultima posicao
+                aux = aux + 'z' - '0' + 1;
             palavra[i] = aux;
         }
     }
@@ -16,7 +30,7 @@ void criptografar(char *palavra, int senha){ //função para criptografar as palav
 
 //le os dados inseridos nos arquivos:
 
-void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
+void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos, int senha){
     char *copiar;
     size_t tam = 1; //necessario para o getline
     int posicao;
@@ -39,25 +53,25 @@ void iniciar_aluno(struct alunos *cab_alunos, int *id_alunos, int *qnt_alunos){
         getline(&copiar, &tam, arquivo);
         p->id = atoi(copiar);
         posicao = getline(&p->nome, &tam, arquivo);
-        p->nome[posicao - 1] = '\0';
+        p->nome[posicao - 1] = '\0'; //troca o \n lido por \0
+        descriptografar(p->nome, senha);
         posicao = getline(&p->matricula, &tam, arquivo);
         p->matricula[posicao - 1] = '\0';
+        descriptografar(p->matricula, senha);
         getline(&copiar, &tam, arquivo);
         p->pendencia = atoi(copiar);
         p->prox = NULL;
         ant = p;
     }
-
     free(copiar);
     fclose(arquivo);
     return;
 
 }
 
-void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros){
-
+void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros, int senha){
     char *copiar;
-    size_t tam = 1;
+    size_t tam = 1; //necessario para usar o getline
     int posicao;
 
     copiar = (char *) malloc (sizeof(char));
@@ -78,10 +92,12 @@ void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros){
         getline(&copiar, &tam, arquivo);
         p->id = atoi(copiar);
         posicao = getline(&p->nome, &tam, arquivo);
-        p->nome[posicao - 1] = '\0';
+        p->nome[posicao - 1] = '\0'; //troca o \n lido por \0
+        descriptografar(p->nome, senha);
         getline(&copiar, &tam, arquivo);
         p->ano = atoi(copiar);
         posicao = getline(&p->categoria, &tam, arquivo);
+        descriptografar(p->categoria, senha);
         p->categoria[posicao - 1] = '\0';
         getline(&copiar, &tam, arquivo);
         p->estado = atoi(copiar);
@@ -90,24 +106,21 @@ void iniciar_livro(struct livros *cab_livros, int *id_livros, int *qnt_livros){
         p->prox = NULL;
         ant = p;
     }
-
     free(copiar);
     fclose(arquivo);
     return;
 }
 
-void iniciar_infraestrutura(struct infraestrutura *cab_infraestrutura, int *num_infraestrutura, int *qnt_infraestrutura){
+void iniciar_infraestrutura(struct infraestrutura *cab_infraestrutura, int *qnt_infraestrutura, int senha){
 
     char *copiar;
-    size_t tam = 1;
+    size_t tam = 1; //necessario para usar o getline
 
     copiar = (char *) malloc (sizeof(char));
 
     FILE *arquivo;
     arquivo = fopen("infraestrutura.txt", "r");
 
-    getline(&copiar, &tam, arquivo);
-    (*num_infraestrutura) = atoi(copiar);
     getline(&copiar, &tam, arquivo);
     (*qnt_infraestrutura) = atoi(copiar);
     struct infraestrutura *antr = cab_infraestrutura;
@@ -178,7 +191,7 @@ void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros, in
     	criptografar(p->nome, senha);
     	fprintf(arquivo, "%s\n", p->nome);
     	fprintf(arquivo, "%d\n", p->ano);
-    	criptografar(p->nome, senha);
+    	criptografar(p->categoria, senha);
     	fprintf(arquivo, "%s\n", p->categoria);
     	fprintf(arquivo, "%d\n", p->estado);
     	fprintf(arquivo, "%d\n", p->id_aluno);
@@ -194,12 +207,11 @@ void encerrar_livro(struct livros *cab_livros, int id_livros, int qnt_livros, in
     return;
 }
 
-void encerrar_infraestrutura(struct infraestrutura *cab_infraestrutura, int num_infraestrutura, int qnt_infraestrutura, int senha){
+void encerrar_infraestrutura(struct infraestrutura *cab_infraestrutura, int qnt_infraestrutura, int senha){
 
     FILE *arquivo;
     arquivo = fopen("infraestrutura.txt", "w");
 
-    fprintf(arquivo, "%d\n", num_infraestrutura);
     fprintf(arquivo, "%d\n", qnt_infraestrutura);
     struct infraestrutura *r = cab_infraestrutura->prox;
     struct infraestrutura *antr = cab_infraestrutura->prox;
